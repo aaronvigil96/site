@@ -14,11 +14,13 @@ const Header = () => {
     return(
         <div className="w-full px-4 py-2 text-white">
             <header className="max-w-3xl mx-auto flex items-center justify-between">
-                <div>
-                    <h2 className="text-3xl font-bold">Logo</h2>
-                </div>
+                <Link to={'/'} className="hover:text-secondary transition-colors duration-300 ease-in-out">
+                    <div>
+                        <h2 className="text-3xl font-bold">3 Digitos</h2>
+                    </div>
+                </Link>
                 <div className="flex items-center gap-2">
-                    <Link to={'/dashboard'}>
+                    <Link to={'/dashboard'} className="hover:text-secondary transition-colors duration-300 ease-in-out">
                         <LuLayoutDashboard className="text-3xl" />
                     </Link>
                     <svg onClick={toggleMenu} xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" className="cursor-pointer"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></svg>

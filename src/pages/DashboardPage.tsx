@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const DashboardPage = () => {
     return (
         <div className="mx-auto">
-            <div className="flex w-full h-screen gap-2 p-2">
+            <div className="flex w-full h-dvh gap-2 p-2">
                 <div className="basis-[80px] bg-primary rounded-sm p-2">
                     <div className="flex flex-col justify-between items-center h-full">
                         <div className="flex flex-col items-center gap-5">
