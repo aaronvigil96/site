@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <p className="bg-black py-2 text-white text-center font-thin"><span className="font-bold uppercase">Envios gratis</span> en compras mayores a $10.000</p>
+      <p className="bg-white py-1 text-center"><span className="font-bold uppercase">envios gratis</span> en compras mayores a $10.000</p>
       <Header/>
       <FeaturedProducts/>
     </>
