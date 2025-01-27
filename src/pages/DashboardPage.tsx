@@ -1,5 +1,5 @@
 import { LuHouse, LuPanelLeftClose, LuStore } from "react-icons/lu"
-import { Link } from "react-router";
+import { Link, Outlet } from "react-router";
 
 const DashboardPage = () => {
     return (
@@ -8,12 +8,16 @@ const DashboardPage = () => {
                 <div className="basis-[80px] bg-primary rounded-sm p-2">
                     <div className="flex flex-col justify-between items-center h-full">
                         <div className="flex flex-col items-center gap-5">
-                            <div className="p-4 bg-slate-700 cursor-pointer text-secondary rounded-3xl hover:rounded-md hover:bg-secondary hover:text-black duration-300 ease-linear">
-                                <LuHouse className="text-2xl"/>
-                            </div>
-                            <div className="p-4 bg-slate-700 cursor-pointer text-secondary rounded-3xl hover:rounded-md hover:bg-secondary hover:text-black duration-300 ease-linear">
-                                <LuStore className="text-2xl"/>
-                            </div>
+                            <Link to={'/dashboard/home'}>
+                                <div className="p-4 bg-slate-700 cursor-pointer text-secondary rounded-3xl hover:rounded-md hover:bg-secondary hover:text-black duration-300 ease-linear">
+                                    <LuHouse className="text-2xl"/>
+                                </div>
+                            </Link>
+                            <Link to={'/dashboard/product'}>
+                                <div className="p-4 bg-slate-700 cursor-pointer text-secondary rounded-3xl hover:rounded-md hover:bg-secondary hover:text-black duration-300 ease-linear">
+                                    <LuStore className="text-2xl"/>
+                                </div>
+                            </Link>
                         </div>
                         <div>
                             <hr className="text-slate-700"/>
@@ -26,7 +30,7 @@ const DashboardPage = () => {
                     </div>
                 </div>
                 <div className="basis-full bg-primary rounded-sm p-2">
-
+                    <Outlet/>
                 </div>
             </div>
         </div>
