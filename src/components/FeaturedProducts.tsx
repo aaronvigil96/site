@@ -1,11 +1,14 @@
+import { useProductStore } from "../stores/product.store"
 import CardProduct, { Product } from "./CardProduct"
 
 const FeaturedProducts = () => {
 
+    const azucar = useProductStore((state) => state.azucar);
+
     const products:Product[] = [
-        {image: 'azucar.png', name: 'azucar', price:1200, category: 'mercaderia'},
-        {image: 'yerba.png', name: 'yerba', price:1500, category: 'mercaderia'},
-        {image: 'leche.png', name: 'leche', price: 1300, category: 'mercaderia'}
+        {image: 'azucar.png', name: 'azucar', price:1200, category: 'mercaderia', quantity: azucar},
+        {image: 'yerba.png', name: 'yerba', price:1500, category: 'mercaderia', quantity: 10},
+        {image: 'leche.png', name: 'leche', price: 1300, category: 'mercaderia', quantity: 11}
     ]
 
     return(
@@ -16,7 +19,7 @@ const FeaturedProducts = () => {
             </div>
             <div className="flex gap-4 flex-wrap md:flex-nowrap justify-center mt-2">
                 {
-                    products?.map((product,index) => (<CardProduct key={index} name={product.name} image={product.image} price={product.price} category={product.category}/>))
+                    products?.map((product,index) => (<CardProduct key={index} name={product.name} image={product.image} price={product.price} category={product.category} quantity={product.quantity}/>))
                 }
             </div>
         </section>

@@ -1,7 +1,13 @@
+import CardProductDashboard from "../components/CardProductDashboard";
+import { useProductStore } from "../stores/product.store";
+
 export const DashboardHomePage = () => {
+
+    const azucar = useProductStore((state) => state.azucar)
+
     return(
-        <div>
-            <h2>Dashboard Home Page</h2>
+        <div className="flex">
+            <CardProductDashboard name="azucar" quantity={azucar}/>
         </div>
     )
 }
