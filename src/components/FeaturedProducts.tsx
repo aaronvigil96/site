@@ -1,8 +1,8 @@
-import CardProduct from "./CardProduct"
+import CardProduct, { Product } from "./CardProduct"
 
 const FeaturedProducts = () => {
 
-    const products = [
+    const products:Product[] = [
         {image: 'azucar.png', name: 'azucar', price:1200, category: 'mercaderia'},
         {image: 'yerba.png', name: 'yerba', price:1500, category: 'mercaderia'},
         {image: 'leche.png', name: 'leche', price: 1300, category: 'mercaderia'}
@@ -16,7 +16,7 @@ const FeaturedProducts = () => {
             </div>
             <div className="flex gap-4 flex-wrap md:flex-nowrap justify-center mt-2">
                 {
-                    products?.map((product,index) => (<CardProduct key={index} product={product}/>))
+                    products?.map((product,index) => (<CardProduct key={index} name={product.name} image={product.image} price={product.price} category={product.category}/>))
                 }
             </div>
         </section>
