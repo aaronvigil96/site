@@ -1,22 +1,16 @@
-export interface Product {
-    image: string;
-    name: string;
-    price: number;
-    category: string;
-    quantity: number;
-}
+import { Product } from "../interface/product.interface";
 
-const CardProduct = ({image, name, price, category, quantity}:Product) => {
+const CardProduct = ({id, img, name, price, quantity}:Product) => {
+
     return(
-        <div className={`flex flex-col w-72 bg-gray-100 p-4 ${quantity ? "group cursor-pointer rounded-sm hover:bg-gray-300  transition-colors duration-300 ease-in-out" : "bg-slate-500"}`}>
+        <div key={id} className={`flex flex-col w-72 bg-gray-100 p-4 ${quantity ? "group cursor-pointer rounded-sm hover:bg-gray-300  transition-colors duration-300 ease-in-out" : "bg-slate-500"}`}>
             <div className="flex-[3]">
-                <img className={`object-cover ${quantity ? "group-hover:scale-110 transition-transform duration-300 ease-in-out" : ""}`} src={image}/>
+                <img className={`object-cover ${quantity ? "group-hover:scale-110 transition-transform duration-300 ease-in-out" : ""}`} src={img}/>
             </div>
             <div className="flex-[1] flex flex-col gap-2">
                 <div>
                     <p className="uppercase font-black text-black">{name}</p>
                     <p className="font-semibold">${price}</p>
-                    <p className="uppercase">{category}</p>
                     <p>Cantidad: <span className="font-black">{quantity}</span></p>
                 </div>
                 {

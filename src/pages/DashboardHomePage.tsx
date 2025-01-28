@@ -1,13 +1,26 @@
+import { useEffect, useState } from "react";
 import CardProductDashboard from "../components/CardProductDashboard";
-import { useProductStore } from "../stores/product.store";
+import { Product } from "../interface/product.interface";
 
 export const DashboardHomePage = () => {
+    
+    const [products, setProducts] = useState([]);
 
-    const azucar = useProductStore((state) => state.azucar)
+    const populateProducts = async () => {
+        const data = await fetch('http://localhost:3000/products');
+        setProducts(await data.json());
+    }
+
+    useEffect(() => {
+        populateProducts();
+    },[]);
+
 
     return(
-        <div className="flex">
-            <CardProductDashboard name="azucar" quantity={azucar}/>
+        <div className="flex flex-wrap gap-2">
+            {
+                products?.map((product:Product) => (<CardProductDashboard key={product.id} name={product.name} quantity={product.quantity}/>))
+            }
         </div>
     )
 }

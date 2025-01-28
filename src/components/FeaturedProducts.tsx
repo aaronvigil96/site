@@ -1,15 +1,11 @@
-import { useProductStore } from "../stores/product.store"
-import CardProduct, { Product } from "./CardProduct"
+import { Product } from "../interface/product.interface";
+import CardProduct from "./CardProduct"
 
-const FeaturedProducts = () => {
+interface FeaturedProductsProps {
+    products: Product[]
+}
 
-    const azucar = useProductStore((state) => state.azucar);
-
-    const products:Product[] = [
-        {image: 'azucar.png', name: 'azucar', price:1200, category: 'mercaderia', quantity: azucar},
-        {image: 'yerba.png', name: 'yerba', price:1500, category: 'mercaderia', quantity: 10},
-        {image: 'leche.png', name: 'leche', price: 1300, category: 'mercaderia', quantity: 11}
-    ]
+const FeaturedProducts:React.FC<FeaturedProductsProps> = ({products}) => {
 
     return(
         <section className="max-w-3xl mx-auto">
@@ -19,7 +15,7 @@ const FeaturedProducts = () => {
             </div>
             <div className="flex gap-4 flex-wrap md:flex-nowrap justify-center mt-2">
                 {
-                    products?.map((product,index) => (<CardProduct key={index} name={product.name} image={product.image} price={product.price} category={product.category} quantity={product.quantity}/>))
+                    products?.map((product) => (<CardProduct key={product.id} id={product.id} name={product.name} img={product.img} price={product.price} quantity={product.quantity}/>))
                 }
             </div>
         </section>

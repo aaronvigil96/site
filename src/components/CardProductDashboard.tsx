@@ -1,11 +1,7 @@
+import { Product } from "../interface/product.interface";
 import { useProductStore } from "../stores/product.store";
 
-interface Props {
-    name: string;
-    quantity: number;
-}
-
-const CardProductDashboard = ({name, quantity}:Props) => {
+const CardProductDashboard = ({name, quantity}:Product) => {
 
     const populateAzucar = useProductStore(state => state.increasePopulation);
 

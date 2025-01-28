@@ -1,7 +1,21 @@
+import { useEffect, useState } from "react";
 import FeaturedProducts from "../components/FeaturedProducts";
 import Header from "../components/Header";
+import { Product } from "../interface/product.interface";
 
 const HomePage = () => {
+
+    const [products, setProducts] = useState<Product[]>([]);
+
+    const populateProducts = async () => {
+        const data = await fetch('http://localhost:3000/products');
+        setProducts(await data.json());
+    }
+
+    useEffect(() => {
+        populateProducts();
+    },[]);
+
     return(
         <>
             <p className="bg-white py-1 text-center"><span className="font-bold uppercase">envios gratis</span> en compras mayores a $10.000</p>
@@ -18,7 +32,7 @@ const HomePage = () => {
             </section>
 
             <div>
-                <FeaturedProducts/>
+                <FeaturedProducts products={products}/>
             </div>
         </>
     )

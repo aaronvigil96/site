@@ -1,11 +1,17 @@
 import { useState } from "react";
 import Menu from "./Menu";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { LuAlignJustify, LuLayoutDashboard } from "react-icons/lu";
+import { useAuthStore } from "../stores/auth.store";
 
 const Header = () => {
 
+    const navigate = useNavigate();
+
     const [isOpen, setIsOpen] = useState(false);
+
+    const isAuth = useAuthStore().isAuth;
+    const logout = useAuthStore().logout;
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -20,9 +26,19 @@ const Header = () => {
                     </div>
                 </Link>
                 <div className="flex items-center gap-2">
-                    <Link to={'/dashboard'} className="hover:text-secondary transition-colors duration-300 ease-in-out">
-                        <LuLayoutDashboard className="text-3xl" />
-                    </Link>
+                    {
+                        isAuth 
+                        ?
+                        <>
+                            <button onClick={() => {logout()}} className="p-2 bg-primary border border-white rounded-sm hover:text-secondary cursor-pointer transition-colors duration-300 ease-in-out">Cerrar sesión</button>
+                            <Link to={'/dashboard'} className="hover:text-secondary transition-colors duration-300 ease-in-out">
+                                <LuLayoutDashboard className="text-3xl" />
+                            </Link>
+                        </>
+                        :
+                        <button onClick={() => {navigate('/login')}} className="p-2 bg-primary border border-white rounded-sm hover:text-secondary cursor-pointer transition-colors duration-300 ease-in-out">Iniciar sesión</button>
+                    }
+                    
                     <LuAlignJustify onClick={toggleMenu} className="text-3xl cursor-pointer hover:text-secondary transition-colors duration-300 ease-in-out"/>
                 </div>
                 <div className={`fixed top-0 right-0 h-full w-full bg-primary ${isOpen ? "translate-x-0" : "translate-x-full"} md:w-xl transition-transform duration-300 ease-in-out`}>
