@@ -12,11 +12,11 @@ export const useAuthStore = create(persist<AuthState>(
     (set) => ({
     token: '',
     isAuth: false,
-    setToken:(tokenValue) => set((state) => ({
+    setToken:(tokenValue) => set(() => ({
         token: tokenValue,
         isAuth: true
     })),
-    logout:() => set((state) => ({
+    logout:() => set(() => ({
         token: "",
         isAuth: false
     })),
