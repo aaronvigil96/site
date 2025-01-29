@@ -23,7 +23,7 @@ const LoginPage = () => {
                 password
             });
             setToken(resp.data.token);
-            navigate('/dashboard');
+            navigate('/');
         }catch(err){
             console.log(err);
         }

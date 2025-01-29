@@ -9,9 +9,6 @@ import DashboardProductPage from './pages/DashboardProductPage.tsx'
 import NotFoundPage from './pages/NotFoundPage.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
 import LoginPage from './pages/LoginPage.tsx'
-import { useAuthStore } from './stores/auth.store.ts'
-
-const isAuth = useAuthStore.getState().isAuth;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -19,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
-        <Route element={<ProtectedRoute isAuth={isAuth}/>}>
+        <Route element={<ProtectedRoute/>}>
           <Route path='/dashboard' element={<DashboardPage/>}>
             <Route index element={<Navigate to="/dashboard/home" replace />} />
             <Route path='/dashboard/home' index element={<DashboardHomePage/>}/>

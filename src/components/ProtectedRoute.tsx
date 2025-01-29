@@ -1,10 +1,10 @@
 import { Navigate, Outlet } from "react-router"
+import { useAuthStore } from "../stores/auth.store";
 
-interface ProtectedRouteProps {
-    isAuth: boolean;
-}
+const ProtectedRoute = () => {
 
-const ProtectedRoute:React.FC<ProtectedRouteProps> = ({isAuth}) => {
+    const isAuth = useAuthStore.getState().isAuth;
+
     if(!isAuth) return <Navigate to={'/'} replace/>;
     return <Outlet/>
 }
