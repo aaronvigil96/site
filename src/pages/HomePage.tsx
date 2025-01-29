@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import FeaturedProducts from "../components/FeaturedProducts";
 import Header from "../components/Header";
 import { Product } from "../interface/product.interface";
+import axios from "../libs/axios";
 
 const HomePage = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
 
     const populateProducts = async () => {
-        const data = await fetch('http://localhost:3000/products');
-        setProducts(await data.json());
+        const data = await axios('/products');
+        setProducts(data.data);
     }
 
     useEffect(() => {
