@@ -1,6 +1,10 @@
+import CreateProduct from "../components/CreateProduct";
+
 const DashboardProductPage = () => {
     return (
-        <h2>Dashboard Product Page</h2>
+        <div>
+            <CreateProduct/>
+        </div>
     )
 }
 
