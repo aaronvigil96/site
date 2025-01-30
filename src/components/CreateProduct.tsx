@@ -15,7 +15,7 @@ const CreateProduct = () => {
 
     const createProduct = async ({name, price, quantity}:CreateProduct) => {
         try{
-            const data = await axios.post('/products', {
+            await axios.post('/products', {
                 name, price: +price ,quantity: +quantity, img: 'yerba.png'
             });
             navigate('/');
