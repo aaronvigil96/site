@@ -2,6 +2,7 @@ import { Product } from "../interface/product.interface";
 
 const CardProduct = ({id, img, name, price, quantity}:Product) => {
 
+
     return(
         <div key={id} className={`flex flex-col w-72 bg-gray-100 p-4 ${quantity ? "group cursor-pointer rounded-sm hover:bg-gray-300  transition-colors duration-300 ease-in-out" : "bg-slate-500"}`}>
             <div className="flex-[3]">

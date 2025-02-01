@@ -1,4 +1,4 @@
-import { LuHouse, LuPanelLeftClose, LuStore } from "react-icons/lu"
+import { LuHouse, LuPanelLeftClose, LuStickyNote, LuStore } from "react-icons/lu"
 import { Link, Outlet } from "react-router";
 
 const DashboardPage = () => {
@@ -16,6 +16,11 @@ const DashboardPage = () => {
                             <Link to={'/dashboard/product'}>
                                 <div className="p-4 bg-slate-700 cursor-pointer text-secondary rounded-3xl hover:rounded-md hover:bg-secondary hover:text-black duration-300 ease-linear">
                                     <LuStore className="text-2xl"/>
+                                </div>
+                            </Link>
+                            <Link to={'/dashboard/category'}>
+                                <div className="p-4 bg-slate-700 cursor-pointer text-secondary rounded-3xl hover:rounded-md hover:bg-secondary hover:text-black duration-300 ease-linear">
+                                    <LuStickyNote className="text-2xl"/>
                                 </div>
                             </Link>
                         </div>

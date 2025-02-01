@@ -1,17 +1,42 @@
 import { LuFeather } from "react-icons/lu";
 import { Product } from "../interface/product.interface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "../libs/axios";
 import { useNavigate } from "react-router";
 
-const CardProductDashboard = ({id, name, quantity, price, img}:Product) => {
+type Category = {
+    id: number;
+    name: string;
+    isActive: boolean;
+}
+
+const CardProductDashboard = ({id, name, quantity, price, img, categoryId}:Product) => {
 
     const [isEditing, setIsEditing] = useState(false);
-    const [product, setProduct] = useState({name, quantity, price, img});
+    const [product, setProduct] = useState({name, quantity, price, img, categoryId});
+    const [categories, setCategories] = useState([]);
+    const [category, setCategory] = useState('');
 
-    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setProduct({...product, [e.target.name]:e.target.value});
     }
+
+    const fetchingCategories = async () => {
+        const data = await axios.get('/categories');
+
+        const category:Category = data.data.find((e:Category) => {
+            if(e.id === id){
+                return e;
+            }
+        });
+
+        setCategory(category.name);
+        setCategories(data.data);
+    }
+
+    useEffect(() => {
+        fetchingCategories();
+    },[]);
 
     const navigate = useNavigate();
 
@@ -21,7 +46,8 @@ const CardProductDashboard = ({id, name, quantity, price, img}:Product) => {
                 name: product.name,
                 price: Number(product.price),
                 quantity: Number(product.quantity),
-                img: product.img
+                img: product.img,
+                categoryId: Number(product.categoryId)
             });
             navigate('/')
         }catch(err){
@@ -87,6 +113,21 @@ const CardProductDashboard = ({id, name, quantity, price, img}:Product) => {
                     />
                     :
                     <span className="font-black uppercase">{img}</span>
+                    }</p>
+                    <p>Categoria: {
+                        isEditing 
+                        ?
+                            <select 
+                                onChange={handleChange}
+                                name="categoryId"
+                                className="border p-1 rounded text-black"
+                            >
+                                {
+                                    categories?.map(({id, name}:Category) => (<option key={id} value={id}>{name}</option>))
+                                }
+                            </select>
+                        :
+                        <span className="font-black uppercase">{category}</span>
                     }</p>
             </div>
             {

@@ -20,7 +20,7 @@ export const DashboardHomePage = () => {
     return(
         <div className="flex flex-wrap gap-2">
             {
-                products?.map((product:Product) => (<CardProductDashboard key={product.id} id={product.id} name={product.name} quantity={product.quantity} price={product.price} img={product.img}/>))
+                products?.map((product:Product) => (<CardProductDashboard key={product.id} id={product.id} name={product.name} quantity={product.quantity} price={product.price} img={product.img} categoryId={product.categoryId}/>))
             }
         </div>
     )

@@ -9,6 +9,7 @@ import DashboardProductPage from './pages/DashboardProductPage.tsx'
 import NotFoundPage from './pages/NotFoundPage.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
 import LoginPage from './pages/LoginPage.tsx'
+import DashboardCategoryPage from './pages/DashboardCategoryPage.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
             <Route index element={<Navigate to="/dashboard/home" replace />} />
             <Route path='/dashboard/home' index element={<DashboardHomePage/>}/>
             <Route path='/dashboard/product' element={<DashboardProductPage/>}/>
+            <Route path='/dashboard/category' element={<DashboardCategoryPage/>}/>
           </Route>
         </Route>
         <Route path='*' element={<NotFoundPage/>}/>
