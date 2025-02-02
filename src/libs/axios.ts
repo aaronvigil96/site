@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useAuthStore } from '../stores/auth.store';
 
+//baseURL: "https://aaronvigil.com.ar/api/"
+
 const authApi = axios.create({
-    baseURL: "https://aaronvigil.com.ar/api/"
+    baseURL: "http://localhost:3000/api/"
 })
 
 authApi.interceptors.request.use((config) => {

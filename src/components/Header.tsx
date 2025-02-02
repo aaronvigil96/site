@@ -36,7 +36,11 @@ const Header = () => {
                             </Link>
                         </>
                         :
-                        <button onClick={() => {navigate('/login')}} className="p-2 bg-primary border border-white rounded-sm hover:text-secondary cursor-pointer transition-colors duration-300 ease-in-out">Iniciar sesión</button>
+                        <div className="flex gap-2">
+                            <button onClick={() => {navigate('/login')}} className="p-2 bg-primary border border-white rounded-sm hover:text-secondary cursor-pointer transition-colors duration-300 ease-in-out">Iniciar sesión</button>
+                            <button onClick={() => {navigate('/register')}} className="p-2 bg-primary border border-white rounded-sm hover:text-secondary cursor-pointer transition-colors duration-300 ease-in-out">Registrarse</button>
+
+                        </div>
                     }
                     
                     <LuAlignJustify onClick={toggleMenu} className="text-3xl cursor-pointer hover:text-secondary transition-colors duration-300 ease-in-out"/>

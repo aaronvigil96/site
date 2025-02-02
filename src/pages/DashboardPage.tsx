@@ -1,7 +1,11 @@
-import { LuHouse, LuPanelLeftClose, LuStickyNote, LuStore } from "react-icons/lu"
+import { LuHouse, LuPanelLeftClose, LuStickyNote, LuStore, LuUserRound } from "react-icons/lu"
 import { Link, Outlet } from "react-router";
+import { useAuthStore } from "../stores/auth.store";
 
 const DashboardPage = () => {
+
+    const role = useAuthStore.getState().role;
+
     return (
         <div className="mx-auto">
             <div className="flex w-full h-dvh gap-2 p-2">
@@ -23,6 +27,20 @@ const DashboardPage = () => {
                                     <LuStickyNote className="text-2xl"/>
                                 </div>
                             </Link>
+                            {
+                                role === "ADMIN" ?
+                
+                                <Link to={'/dashboard/users'}>
+                                    <div className="p-4 bg-slate-700 cursor-pointer text-secondary rounded-3xl hover:rounded-md hover:bg-secondary hover:text-black duration-300 ease-linear">
+                                        <LuUserRound className="text-2xl" />
+                                    </div>
+                                </Link>
+
+                                : 
+                            
+                                ""
+                            }
+                            
                         </div>
                         <div>
                             <hr className="text-slate-700"/>

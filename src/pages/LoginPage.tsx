@@ -34,6 +34,7 @@ const LoginPage = () => {
         <>
             <Header/>
             <div className="bg-primary p-2">
+                <h2 className="text-white text-center text-3xl mb-2">Iniciar sesión</h2>
                 <form onSubmit={handleSubmit(loginUser)} className="flex flex-col gap-2 max-w-max mx-auto p-4 bg-white rounded-sm">
                     <div>
                         <label className="block" htmlFor="email">Email</label>
